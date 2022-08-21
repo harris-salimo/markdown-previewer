@@ -1,0 +1,15 @@
+#editor {
+    width: 400px;
+    height: 500px;
+    padding: 10px 15px;
+}
+
+#preview {
+    border: 1px solid #777;
+    padding: 10px 15px;
+
+    width: 400px;
+    height: 500px;
+
+    overflow-y: scroll;
+}
