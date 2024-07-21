@@ -15,10 +15,7 @@ export default function MarkdownPreviewer() {
   const getMarkdownText = () => {
     const rawMarkup = DOMPurify.sanitize(
       marked.parse(
-        markdown.replace(
-          /^[\u{200B}\u{200C}\u{200D}\u{200E}\u{200F}\u{FEFF}]/,
-          "",
-        ),
+        markdown.replace(/^[\\u200B\\u200C\\u200D\\u200E\\u200F\\uFEFF]/, ""),
       ) as string,
     );
     return { __html: rawMarkup };
