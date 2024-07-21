@@ -1,9 +1,9 @@
 import DOMPurify from "dompurify";
 import { marked } from "marked";
-import { ChangeEventHandler, lazy, useState } from "react";
+import React, { ChangeEventHandler, useState } from "react";
 
-const Editor = lazy(() => import("./Editor"));
-const Previewer = lazy(() => import("./Previewer"));
+const Editor = React.lazy(() => import("./Editor"));
+const Previewer = React.lazy(() => import("./Previewer"));
 
 export default function MarkdownPreviewer() {
   const [markdown, setMarkdown] = useState("# Hello, Markdown!");
