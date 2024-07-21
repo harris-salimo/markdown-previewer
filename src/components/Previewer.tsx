@@ -1,10 +1,10 @@
-export const Previewer = ({
+export default function Previewer({
   value,
 }: {
   value?: {
-    __html: string & TrustedHTML & DocumentFragment & HTMLElement;
+    __html: string;
   };
-}) => {
+}) {
   return (
     <div className="preview prose h-full max-w-full dark:prose-invert">
       <h2>Preview</h2>
@@ -14,4 +14,4 @@ export const Previewer = ({
       />
     </div>
   );
-};
+}

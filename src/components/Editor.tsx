@@ -1,12 +1,12 @@
 import { ChangeEventHandler } from "react";
 
-export const Editor = ({
+export default function Editor({
   value,
   onChange,
 }: {
   value?: string;
   onChange?: ChangeEventHandler<HTMLTextAreaElement>;
-}) => {
+}) {
   return (
     <div className="editor prose h-full max-w-full dark:prose-invert">
       <h2>Editor</h2>
@@ -17,4 +17,4 @@ export const Editor = ({
       />
     </div>
   );
-};
+}

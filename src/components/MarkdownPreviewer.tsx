@@ -1,10 +1,11 @@
 import DOMPurify from "dompurify";
 import { marked } from "marked";
-import { ChangeEventHandler, useState } from "react";
-import { Editor } from "./Editor";
-import { Previewer } from "./Previewer";
+import { ChangeEventHandler, lazy, useState } from "react";
 
-export const MarkdownPreviewer = () => {
+const Editor = lazy(() => import("./Editor"));
+const Previewer = lazy(() => import("./Previewer"));
+
+export default function MarkdownPreviewer() {
   const [markdown, setMarkdown] = useState("# Hello, Markdown!");
 
   const handleChange: ChangeEventHandler<HTMLTextAreaElement> = (e) => {
@@ -14,8 +15,11 @@ export const MarkdownPreviewer = () => {
   const getMarkdownText = () => {
     const rawMarkup = DOMPurify.sanitize(
       marked.parse(
-        markdown.replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, ""),
-      ),
+        markdown.replace(
+          /^[\u{200B}\u{200C}\u{200D}\u{200E}\u{200F}\u{FEFF}]/,
+          "",
+        ),
+      ) as string,
     );
     return { __html: rawMarkup };
   };
@@ -26,4 +30,4 @@ export const MarkdownPreviewer = () => {
       <Previewer value={getMarkdownText()} />
     </div>
   );
-};
+}

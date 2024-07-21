@@ -1,4 +1,6 @@
-import { MarkdownPreviewer } from "./components/MarkdownPreviewer";
+import { lazy } from "react";
+
+const MarkdownPreviewer = lazy(() => import("./components/MarkdownPreviewer"));
 
 function App() {
   return (
